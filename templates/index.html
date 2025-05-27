@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>File Downloader</h1>
+        
+        {% if files %}
+            <ul class="file-list">
+                {% for file in files %}
+                <li class="file-item">
+                    <div class="file-info">
+                        <div class="file-name" data-type="{{ file.name.split('.')[-1].lower() if '.' in file.name else 'unknown' }}">
+                            {{ file.name }}
+                        </div>
+                        <div class="file-details">
+                            <span class="file-size">{{ "%.2f"|format(file.size / 1024) }} KB</span>
+                            <span class="file-date">{{ file.modified|int|datetime }}</span>
+                        </div>
+                    </div>
+                    <a href="/download/{{ file.name }}" class="download-btn">
+                        Télécharger
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="no-files">
+                Aucun fichier disponible pour le téléchargement.
+            </div>
+        {% endif %}
+        
+        <div class="api-info">
+            <h3>API Endpoints</h3>
+            <p class="api-description"><strong>Liste des fichiers (JSON):</strong></p>
+            <code class="api-endpoint">GET /api/files</code>
+            <p class="api-description"><strong>Téléchargement:</strong></p>
+            <code class="api-endpoint">GET /download/&lt;filename&gt;</code>
+        </div>
+    </div>
+</body>
+</html>
