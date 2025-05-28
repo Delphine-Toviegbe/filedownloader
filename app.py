@@ -20,6 +20,9 @@ def datetime_filter(timestamp):
 """ Récupation de la liste des fichiers dans le repertoire avec filtres optionnels et 
 retourne une liste vide si le repertoire n'exite pas."""
 def get_files_list( search_term = None, limit = None):
+
+    directory = app.config.get('FILES_DIRECTORY', './files')  # utilisation dynamique
+
     if not os.path.exists(FILES_DIRECTORY):
         return []
     files = []
@@ -68,7 +71,8 @@ def api_file():
 def download_file(fileName):
     # Sécuriser le nom du fichier
     secureName = secure_filename(fileName)
-    filePath = os.path.join(FILES_DIRECTORY, secureName)
+    directory = app.config.get('FILES_DIRECTORY', './files')
+    filePath = os.path.join(directory, secureName)
 
     #Vérification de l'existance du fichier ou si c'est bien un fichier
     if not os.path.exists(filePath) or not os.path.isfile(filePath):
@@ -94,7 +98,8 @@ def internal_error(error):
 
 if __name__ == '__main__':
     # Création du dossier s'il n'existe pas
-    os.makedirs(FILES_DIRECTORY, exist_ok=True)
+    directory = app.config.get('FILES_DIRECTORY', './files')
+    os.makedirs(directory, exist_ok=True)
 
     # Lancement de l'application
 

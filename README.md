@@ -21,8 +21,8 @@ Une application web Flask conteneurisée permettant de lister et télécharger d
 ### 1. Cloner le repository
 
 ```bash
-git clone https://github.com/votre-username/file-downloader-app.git
-cd file-downloader-app
+git clone https://github.com/Delphine-Toviegbe/fileDownloader.git
+cd fileDownloader
 ```
 
 ### 2. Créer des fichiers de test (optionnel)
@@ -30,7 +30,7 @@ cd file-downloader-app
 ```bash
 mkdir -p files
 echo "Fichier de test 1" > files/document.txt
-echo "Fichier de test 2" > files/readme.md
+echo "Fichier de test 2" > files/test.txt
 # Ajoutez vos propres fichiers dans le dossier files/
 ```
 
@@ -39,17 +39,17 @@ echo "Fichier de test 2" > files/readme.md
 **Commande unique pour tout faire :**
 
 ```bash
-docker build -t file-downloader . && docker run -p 5000:5000 -v $(pwd)/files:/app/files file-downloader
+docker build -t fileDownloader . && docker run -p 5000:5000 -v $(pwd)/files:/app/files fileDownloader
 ```
 
 **Ou étape par étape :**
 
 ```bash
 # Construction de l'image
-docker build -t file-downloader .
+docker build -t fileDownloader .
 
 # Lancement du conteneur avec volume monté
-docker run -p 5000:5000 -v $(pwd)/files:/app/files file-downloader
+docker run -p 5000:5000 -v $(pwd)/files:/app/files fileDownloader
 ```
 
 ### 4. Accéder à l'application
@@ -121,10 +121,10 @@ pytest tests/ -v
 
 ```bash
 # Construction de l'image de test
-docker build -t file-downloader-test .
+docker build -t fileDownloader-test .
 
 # Lancement des tests
-docker run --rm file-downloader-test pytest tests/ -v
+docker run --rm fileDownloader-test pytest tests/ -v
 ```
 
 
@@ -139,7 +139,7 @@ docker run --rm file-downloader-test pytest tests/ -v
 Vous pouvez monter n'importe quel dossier local :
 
 ```bash
-docker run -p 5000:5000 -v /chemin/vers/vos/fichiers:/app/files file-downloader
+docker run -p 5000:5000 -v /chemin/vers/vos/fichiers:/app/files fileDownloader
 ```
 
 ## Sécurité
