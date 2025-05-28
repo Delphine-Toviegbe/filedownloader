@@ -53,3 +53,49 @@ def indexPage() :
 
     files = get_files_list(search_term= search if search else None)
     return render_template('index.html', files = files, search = search)
+
+""" API JSON Liste des fichiers disponibles dans le volume"""
+@app.route('/api/files')
+def api_file():
+    files = get_files_list()
+    return jsonify({
+        'status' : 'success',
+        'files' : files,
+        'count' : len(files)
+    })
+""" Téléchargement d'un fichier spécifique"""
+@app.route('/download/<fileName>')
+def download_file(fileName):
+    # Sécuriser le nom du fichier
+    secureName = secure_filename(fileName)
+    filePath = os.path.join(FILES_DIRECTORY, secureName)
+
+    #Vérification de l'existance du fichier ou si c'est bien un fichier
+    if not os.path.exists(filePath) or not os.path.isfile(filePath):
+        abort(404)
+
+    return send_file(filePath, as_attachment=True)
+
+""" Page 404 en cas de non existance"""
+@app.errorhandler(404)
+def not_found_error(error):
+    return jsonify({
+        'status' : 'error',
+        'message' : 'Fichier non retrouvé'
+    }), 404
+
+""" Page erreur serveur"""
+@app.errorhandler(500)
+def internal_error(error):
+    return jsonify({
+        'status' : 'error',
+        'message': 'Erreur interne du serveur',
+    }), 500
+
+if __name__ == '__main__':
+    # Création du dossier s'il n'existe pas
+    os.makedirs(FILES_DIRECTORY, exist_ok=True)
+
+    # Lancement de l'application
+
+    app.run(host ='0.0.0.0', port=5000, debug=True)

@@ -127,20 +127,6 @@ docker build -t file-downloader-test .
 docker run --rm file-downloader-test pytest tests/ -v
 ```
 
-## Structure du projet
-
-```
-file-downloader-app/
-├── app.py                 # Application Flask principale
-├── requirements.txt       # Dépendances Python
-├── Dockerfile            # Configuration Docker
-├── templates/            # Templates HTML
-│   └── index.html        # Page d'accueil
-├── tests/                # Tests automatiques
-│   └── test_app.py       # Tests unitaires
-├── files/                # Dossier pour les fichiers (volume Docker)
-└── README.md             # Cette documentation
-```
 
 ## Configuration
 

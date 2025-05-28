@@ -1,6 +1,6 @@
 
 /* Reset et base */
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,12 +10,15 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-    padding: 20px;
+    padding: 30px;
     line-height: 1.6;
+    justify-content: center;
+    justify-items: center;
 }
 
 /* Container principal */
 .container {
+    
     max-width: 900px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.95);
@@ -119,22 +122,10 @@ h1::after {
 }
 
 .file-name::before {
-    /*content: '📄';*/
     font-size: 1.2rem;
 }
 
-/* Types de fichiers spécifiques *//*
-.file-name[data-type="pdf"]::before { content: '📕'; }
-.file-name[data-type="doc"]::before, 
-.file-name[data-type="docx"]::before { content: '📘'; }
-.file-name[data-type="jpg"]::before,
-.file-name[data-type="jpeg"]::before,
-.file-name[data-type="png"]::before,
-.file-name[data-type="gif"]::before { content: '🖼️'; }
-.file-name[data-type="zip"]::before,
-.file-name[data-type="rar"]::before { content: '📦'; }
-.file-name[data-type="txt"]::before { content: '📝'; }
-*/
+
 .file-details {
     font-size: 0.9rem;
     color: #6c757d;
@@ -150,12 +141,10 @@ h1::after {
 }
 
 .file-size::before {
-   /* content: '📊';*/
     font-size: 0.8rem;
 }
 
 .file-date::before {
-   /* content: '📅';*/
     font-size: 0.8rem;
 }
 
@@ -219,7 +208,6 @@ h1::after {
 }
 
 .no-files::before {
-    /*content: '📁';*/
     font-size: 3rem;
     display: block;
     margin-bottom: 20px;
@@ -246,7 +234,6 @@ h1::after {
 }
 
 .api-info h3::before {
-   /* content: '🔌';*/
     font-size: 1.2rem;
 }
 
