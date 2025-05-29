@@ -21,8 +21,8 @@ Une application web Flask conteneurisée permettant de lister et télécharger d
 ### 1. Cloner le repository
 
 ```bash
-git clone https://github.com/Delphine-Toviegbe/fileDownloader.git
-cd fileDownloader
+git clone https://github.com/Delphine-Toviegbe/filedownloader.git
+cd filedownloader
 ```
 
 ### 2. Créer des fichiers de test (optionnel)
@@ -39,17 +39,17 @@ echo "Fichier de test 2" > files/test.txt
 **Commande unique pour tout faire :**
 
 ```bash
-docker build -t fileDownloader . && docker run -p 5000:5000 -v $(pwd)/files:/app/files fileDownloader
+docker build -t filedownloader . && docker run -p 5000:5000 -v $(pwd)/files:/app/files filedownloader
 ```
 
 **Ou étape par étape :**
 
 ```bash
 # Construction de l'image
-docker build -t fileDownloader .
+docker build -t filedownloader .
 
 # Lancement du conteneur avec volume monté
-docker run -p 5000:5000 -v $(pwd)/files:/app/files fileDownloader
+docker run -p 5000:5000 -v $(pwd)/files:/app/files filedownloader
 ```
 
 ### 4. Accéder à l'application
@@ -121,10 +121,10 @@ pytest tests/ -v
 
 ```bash
 # Construction de l'image de test
-docker build -t fileDownloader-test .
+docker build -t filedownloader-test .
 
 # Lancement des tests
-docker run --rm fileDownloader-test pytest tests/ -v
+docker run --rm filedownloader-test pytest tests/ -v
 ```
 
 
@@ -139,7 +139,7 @@ docker run --rm fileDownloader-test pytest tests/ -v
 Vous pouvez monter n'importe quel dossier local :
 
 ```bash
-docker run -p 5000:5000 -v /chemin/vers/vos/fichiers:/app/files fileDownloader
+docker run -p 5000:5000 -v /chemin/vers/vos/fichiers:/app/files filedownloader
 ```
 
 ## Sécurité
