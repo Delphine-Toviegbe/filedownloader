@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Downloader</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/folder.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1>File Downloader</h1>
+        <h1>
+            <img src="/static/images/folder.png" alt="icon" class="logo">
+            File Downloader
+        </h1>
         
         {% if files %}
             <ul class="file-list">
@@ -16,6 +20,10 @@
                 <li class="file-item">
                     <div class="file-info">
                         <div class="file-name" data-type="{{ file.name.split('.')[-1].lower() if '.' in file.name else 'unknown' }}">
+                            <img
+                                src="{{ url_for('static', filename='images/icon-' + (file.name.split('.')[-1].lower() if '.' in file.name else 'unknown') + '.png') }}"
+                                alt="icon"
+                                class="file-icon"/>
                             {{ file.name }}
                         </div>
                         <div class="file-details">
@@ -43,5 +51,13 @@
             <code class="api-endpoint">GET /download/&lt;filename&gt;</code>
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.file-icon').forEach(img => {
+            img.onerror = function() {
+            this.onerror = null; // éviter boucle infinie
+            this.src = "{{ url_for('static', filename='images/icon-default.png') }}";
+            }
+        });
+</script>
 </body>
 </html>

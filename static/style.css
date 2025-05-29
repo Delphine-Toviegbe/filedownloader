@@ -12,14 +12,14 @@ body {
     min-height: 100vh;
     padding: 30px;
     line-height: 1.6;
-    justify-content: center;
-    justify-items: center;
+    display : flex;
+    align-items: center;
 }
 
 /* Container principal */
 .container {
-    
-    max-width: 900px;
+    max-width: 1200px;
+    width: 70%;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -63,11 +63,25 @@ h1::after {
     border-radius: 2px;
 }
 
+.logo{
+    width: 30px;
+}
+
 /* Liste des fichiers */
 .file-list {
     list-style: none;
     padding: 0;
     margin-bottom: 40px;
+}
+.file-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.file-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .file-item {
@@ -98,7 +112,7 @@ h1::after {
 .file-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(0, 123, 255, 0.2);
-    border-left-color: #28a745;
+    border-left-color: #fa5e1f;
 }
 
 .file-item:hover::before {
@@ -184,6 +198,7 @@ h1::after {
 .download-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+    background: #fa5e1f;
 }
 
 .download-btn:hover::before {
